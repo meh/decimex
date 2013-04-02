@@ -1,0 +1,2 @@
+[ "decimal": {:git,"https://github.com/tim/erlang-decimal.git","76535937d4cf6da542ada268e16ef94ec385913f",[tag: "v0.2.0"]},
+  "erlang_decimal": {:git,"https://github.com/tim/erlang-decimal.git","76535937d4cf6da542ada268e16ef94ec385913f",[tag: "v0.2.0"]} ]
