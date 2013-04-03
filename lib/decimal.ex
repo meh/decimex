@@ -114,6 +114,14 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
     from(:decimal.divide(from(self).internal, from(other).internal, context))
   end
 
+  def remainder(other, self) do
+    remainder(other, [], self)
+  end
+
+  def remainder(other, context, self) do
+    from(:decimal.remainder(from(self).internal, from(other).internal, context))
+  end
+
   def exp(self) do
     exp([], self)
   end
@@ -142,7 +150,7 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
     power(other, [], self)
   end
 
-  def power(context, other, self) do
+  def power(other, context, self) do
     from(:decimal.power(from(self).internal, from(other).internal, context))
   end
 
@@ -154,19 +162,19 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
     from(:decimal.sqrt(from(self).internal, context))
   end
 
-  def max(other, self) do
-    max(other, [], self)
+  def max(self, other) do
+    max(self, other, [])
   end
 
-  def max(other, context, self) do
+  def max(self, other, context) do
     from(:decimal.max(from(self).internal, from(other).internal, context))
   end
 
-  def min(other, self) do
-    min(other, [], self)
+  def min(self, other) do
+    min(self, other, [])
   end
 
-  def min(other, context, self) do
+  def min(self, other, context) do
     from(:decimal.min(from(self).internal, from(other).internal, context))
   end
 
@@ -176,14 +184,6 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
 
   def reduce(context, self) do
     from(:decimal.reduce(from(self).internal, context))
-  end
-
-  def remainder(other, self) do
-    remainder(other, [], self)
-  end
-
-  def remainder(other, context, self) do
-    from(:decimal.remainder(from(self).internal, from(other).internal, context))
   end
 end
 
