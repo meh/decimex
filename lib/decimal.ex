@@ -241,6 +241,12 @@ defimpl Binary.Chars, for: Decimal do
   end
 end
 
+defimpl List.Chars, for: Decimal do
+  def to_char_list(decimal) do
+    :decimal.format(decimal.internal)
+  end
+end
+
 defimpl Binary.Inspect, for: Decimal do
   def inspect(decimal, _) do
     to_binary(decimal)
