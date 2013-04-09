@@ -20,9 +20,9 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
   """
 
   @type i :: { integer, integer, integer } | { integer, atom }
-  @type t :: { Decimal, i }
+  @type t :: Decimal[internal: i]
   @type c :: [{ :precision, integer } | { :rounding, atom }]
-  @type v :: { Decimal, i } | i | number | binary | char_list
+  @type v :: t | i | number | binary | char_list
 
   @doc """
   Convert a value to a decimal.
