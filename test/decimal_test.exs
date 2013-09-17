@@ -135,11 +135,11 @@ defmodule DecimalTest do
   end
 
   test "reduce" do
-    assert to_binary(to_decimal("2.1").reduce) == "2.1"
-    assert to_binary(to_decimal("1.200").reduce) == "1.2"
-    assert to_binary(to_decimal("-120").reduce) == "-1.2E+2"
-    assert to_binary(to_decimal("120.00").reduce) == "1.2E+2"
-    assert to_binary(to_decimal("0.00").reduce) == "0"
+    assert to_string(to_decimal("2.1").reduce) == "2.1"
+    assert to_string(to_decimal("1.200").reduce) == "1.2"
+    assert to_string(to_decimal("-120").reduce) == "-1.2E+2"
+    assert to_string(to_decimal("120.00").reduce) == "1.2E+2"
+    assert to_string(to_decimal("0.00").reduce) == "0"
   end
 
   test "max" do

@@ -377,9 +377,9 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
   end
 end
 
-defimpl Binary.Chars, for: Decimal do
-  def to_binary(decimal) do
-    Kernel.to_binary(:decimal.format(decimal.internal))
+defimpl String.Chars, for: Decimal do
+  def to_string(decimal) do
+    Kernel.to_string(:decimal.format(decimal.internal))
   end
 end
 
@@ -389,9 +389,9 @@ defimpl List.Chars, for: Decimal do
   end
 end
 
-defimpl Binary.Inspect, for: Decimal do
+defimpl Inspect, for: Decimal do
   def inspect(decimal, _) do
-    to_binary(decimal)
+    to_string(decimal)
   end
 end
 
