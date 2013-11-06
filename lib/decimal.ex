@@ -375,6 +375,15 @@ defrecord Decimal, internal: :decimal_conv.number(0) do
   def reduce(context, self) do
     from(:decimal.reduce(from(self).internal, context))
   end
+
+  @doc """
+  Limit the number of digits right of the decimal point, by discarding the least significant ones
+  """
+  @spec truncate(integer, t) :: t
+  def truncate(digits_after_point, Decimal[internal: decimal] = self) do
+    digits = size(to_string(:decimal_arith.coefficient(decimal))) + :decimal_arith.exponent(decimal)
+    self.add("0", precision:  digits + digits_after_point)
+  end
 end
 
 defimpl String.Chars, for: Decimal do

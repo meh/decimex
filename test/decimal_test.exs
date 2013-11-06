@@ -142,6 +142,15 @@ defmodule DecimalTest do
     assert to_string(to_decimal("0.00").reduce) == "0"
   end
 
+  test "truncate" do
+    assert to_string(to_decimal("2.1").truncate(2)) == "2.1"
+    assert to_string(to_decimal("1.200").truncate(2)) == "1.20"
+    assert to_string(to_decimal("-2.1").truncate(2)) == "-2.1"
+    assert to_string(to_decimal("0").truncate(2)) == "0"
+    assert to_string(to_decimal("1234567890123456789012345678901234567890.1234567890").truncate(2)) == "1234567890123456789012345678901234567890.12"
+    assert to_string(to_decimal("1234567890123456789012345678901234567890.1234567890").truncate(0)) == "1234567890123456789012345678901234567890"
+  end
+
   test "max" do
     assert Decimal.max(3, 2).equal?(3)
     assert Decimal.max(-10, 3).equal?(3)
